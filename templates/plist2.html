@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<script>
+function abc()
+{
+if(document.form1.t1.value=="")
+{
+alert("Please enter the Name");
+return(false);
+}
+}
+
+</script>
+<body>
+{% include "p3.html" %}
+<table width="1282" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="9" height="13"></td>
+    <td width="348"></td>
+    <td width="909"></td>
+    <td width="16"></td>
+  </tr>
+  <tr>
+    <td height="186"></td>
+    <td valign="top"><p><strong>Patients List</strong>(Search By Name)
+     </p>
+      <form name="form1" onSubmit="return abc()" method="post" action="plist2">{% csrf_token %}
+        <table width="348" border="0">
+          <tr>
+            <td width="110">Type Name </td>
+            <td width="149"><input name="t1" type="text" id="t1" value="{{s1}}"></td>
+            <td width="67"><input type="submit" name="Submit" value="View"></td>
+          </tr>
+        </table>
+      </form>      <p>&nbsp; </p></td>
+    <td rowspan="2" valign="top"><p><strong>Patient Details</strong></p>
+    <p>{% if records %} </p>
+    <table border="0" width="100%">
+      <tr>
+        <th>Patient ID</th>
+        <th>Name</th>
+        <th>House Name</th>
+        <th>Place</th>
+        <th>Pin</th>
+        <th>Phone</th>
+        <th>Distrct</th>
+        <th>Gender</th>
+        <th>Age</th>
+        <th>Adhhar No.</th>
+		<th>Reg Date</th>
+		<th>Staff ID</th>
+		<th>Hospital ID</th>
+      </tr>
+  {% for pid,name,hname,place,pin,ph,district,gender,age,adharno,regdate,staffid,hospid in records %}
+  <tr align="center">
+    <td>{{pid}}</td>
+    <td>{{name}}</td>
+    <td>{{hname}}</td>
+    <td>{{place}}</td>
+    <td>{{pin}}</td>
+    <td>{{ph}}</td>
+    <td>{{district}}</td>
+    <td>{{gender}}</td>
+    <td>{{age}}</td>
+    <td>{{adharno}}</td>
+	<td>{{regdate}}</td>
+	<td>{{staffid}}</td>
+	<td>{{hospid}}</td>
+  </tr>
+  {% endfor %}
+    </table>
+    {% else %}<b><font color="#FF0000">No Patient Available....</font></b>{% endif %}&nbsp;
+    <p>&nbsp; </p></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="97"></td>
+    <td>&nbsp;</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="36"></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td></td>
+  </tr>
+</table>
+</body>
+</html>

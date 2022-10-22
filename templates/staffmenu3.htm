@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+
+.navbar {
+  overflow: hidden;
+  background-color:#000000;
+  padding-left: 15%;
+}
+
+.navbar a {
+  float: left;
+  font-size: 14px;
+  color:#FFFF00;
+  text-align: center;
+  padding:14px;
+  text-decoration: none;
+  outline: none;
+  font-weight:bold;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 14px;  
+  border: none;
+  outline: none;
+  color:#FFFFFF;
+  font-weight: bold;
+  padding: 14px 12px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color:#003366;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color:#CCCCCC;
+  min-width: 140px;
+  
+  box-shadow: 0px 8px 12px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 12px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color:#FFFFFF;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+</style>
+
+</head>
+<body>
+<div class="navbar">
+  <a href="staffchangepassword1">Change Password(Office Staff)</a>
+   <a href="patientreg1">Patient Registration</a>
+  <div class="dropdown">
+    <button class="dropbtn">Op Booking / Cancellation
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="opbooking1">New Booking</a>
+      <a href="opcancellation1">Cancellation</a>
+      
+    </div>
+  </div> 
+  <div class="dropdown">
+  
+  <button class="dropbtn">Patients List
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="plist1">Search By Name </a>
+      <a href="plist11">Search By Phone Number</a>
+      
+    </div>
+  </div> 
+  
+    <div class="dropdown">
+    <button class="dropbtn">Complaint
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      
+      <a href="complaint11">Send</a>
+	  <a href="viewreply11">View Reply</a>	 
+    </div>
+  </div> 
+   <a href="staffsignout">Signout</a>
+</div>
+</body>
+</html>

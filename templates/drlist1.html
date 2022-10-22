@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+{% include "p1.html" %}
+
+<table width="1294" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="12" height="21">&nbsp;</td>
+    <td width="573">&nbsp;</td>
+    <td width="11">&nbsp;</td>
+    <td width="664">&nbsp;</td>
+    <td width="34">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="269">&nbsp;</td>
+    <td valign="top"><p><strong>Doctors List</strong></p>      <p>{% if records %} </p>      <table border="0" width="100%">
+        <tr>
+          <th>Hospital ID</th>
+          <th>Location</th>
+          <th>Place</th>
+          <th>District</th>
+          
+      </tr>
+    {% for hospid,location,place,district in records %}
+    <tr align="center">
+      <td><form action="drlist1" method="post">{% csrf_token %}<input type="submit" value="{{hospid}}"><input type="hidden" name="t1" value="{{hospid}}"></form></td>
+      <td>{{location}}</td>
+      <td>{{place}}</td>
+      <td>{{district}}</td>
+      
+  </tr>
+    {% endfor %}
+      </table>
+      {% else %}<b><font color="#FF0000">No Hospital Registered</font></b>{% endif %}&nbsp;
+      <p>&nbsp; </p></td>
+    <td>&nbsp;</td>
+    <td valign="top"><p><strong>Selected Hospital - {{s1}}</strong></p>
+    <p>{% if records1 %} </p>
+    <table width="100%" border="0" bgcolor="#66FFFF">
+      <tr>
+        <th>Staff ID</th>
+        <th>Name</th>
+        <th>Place</th>
+        <th>Phone</th>
+        <th>Gender</th>
+        <th>Qualification</th>
+        <th>Experience</th>
+        <th>Specialization</th>
+      </tr>
+  {% for staffid,name,place,ph,gender,qualification,experience,spl in records1 %}
+  <tr align="center">
+    <td>{{staffid}}</td>
+    <td>{{name}}</td>
+    <td>{{place}}</td>
+    <td>{{ph}}</td>
+    <td>{{gender}}</td>
+    <td>{{qualification}}</td>
+    <td>{{experience}}</td>
+    <td>{{spl}}</td>
+  </tr>
+  {% endfor %}
+    </table>
+    {% else %}<b><font color="#FF0000">No Staff Registered</font></b>{% endif %}&nbsp;
+    <p>&nbsp; </p></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="23">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

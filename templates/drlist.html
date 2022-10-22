@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+{% include "p1.html" %}
+
+<table width="1294" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="83" height="21">&nbsp;</td>
+    <td width="1124">&nbsp;</td>
+    <td width="87">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="269">&nbsp;</td>
+    <td valign="top"><p><strong>Doctors List</strong></p>
+    <p>{% if records %} </p>
+    <table border="0" width="59%">
+      <tr>
+        <th>Hospital ID</th>
+        <th>Location</th>
+        <th>Place</th>
+        <th>District</th>
+        
+      </tr>
+  {% for hospid,location,place,district in records %}
+  <tr align="center">
+    <td><form action="drlist1" method="post">{% csrf_token %}<input type="submit" value="{{hospid}}"><input type="hidden" name="t1" value="{{hospid}}"></form></td>
+    <td>{{location}}</td>
+    <td>{{place}}</td>
+    <td>{{district}}</td>
+    
+  </tr>
+  {% endfor %}
+    </table>
+    {% else %}<b><font color="#FF0000">No Hospital Registered</font></b>{% endif %}&nbsp;
+    <p>&nbsp; </p></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="23">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

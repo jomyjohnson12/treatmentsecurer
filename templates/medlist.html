@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+{% include "p1.html" %}
+<table width="1260" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="129" height="323">&nbsp;</td>
+    <td width="1013" valign="top"><p><strong>Medicine List </strong><strong></strong></p>
+      <p>{% if records1 %} </p>
+      <table border="0" width="100%">
+        <tr>
+          <th>Medicine Name</th>
+          <th>Medicine Type</th>
+          <th>Company</th>
+          <th>Content</th>
+          <th>Unit</th>
+         
+        </tr>
+  {% for medname,medtype,company,content,medunit in records1 %}
+  <tr align="center">
+    <td>{{medname}}</td>
+    <td>{{medtype}}</td>
+    <td>{{company}}</td>
+    <td>{{content}}</td>
+    <td>{{medunit}}</td>
+    
+  </tr>
+  {% endfor %}
+      </table>
+      {% else %}<b><font color="#FF0000">No Medicine Registered</font></b>{% endif %}&nbsp;
+      <p></p></td>
+    <td width="118">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="36">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

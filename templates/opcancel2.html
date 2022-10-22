@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+{% include "p4.html" %}
+
+<table width="1296" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="97" height="17"></td>
+    <td width="588"></td>
+    <td width="17"></td>
+    <td width="375"></td>
+    <td width="16"></td>
+    <td width="168"></td>
+    <td width="35"></td>
+  </tr>
+  <tr>
+    <td height="98"></td>
+    <td rowspan="3" valign="top"><p><strong>Op Cancel</strong></p>
+    <p>{% if records %} <strong>Select Booking </strong></p>
+    <table border="0" width="100%">
+      <tr>
+        <th>Booking No </th>
+        <th>Br. ID</th>
+        <th>Booked Date </th>
+        <th>Token No.</th>
+        
+        <th>Select</th>
+      </tr>
+  {% for bno,drid,bdate,tno in records %}
+  <tr align="center">
+    <td>{{bno}}</td>
+    <td>{{drid}}</td>
+    <td>{{bdate}}</td>
+    <td>{{tno}}</td>
+    
+    <td><form action="opcancel2" method="post">
+        {% csrf_token %}
+            <input type="hidden" name="t1" value="{{bno}}">
+            <input name="submit" type="submit" value="Details">
+    </form></td>
+  </tr>
+  {% endfor %}
+    </table>
+    {% else %} <b>No Coming Booking </b> {% endif %}&nbsp;
+    <p>&nbsp; </p></td>
+    <td>&nbsp;</td>
+    <td rowspan="3" valign="top"><p><strong>Booking Details</strong></p>      <form name="form1" method="post" action="">
+        <table width="342" border="0">
+          <tr>
+            <td width="171">Booking No </td>
+            <td width="155">{{s1}}</td>
+          </tr>
+          <tr>
+            <td>Dr ID </td>
+            <td>{{drid}}</td>
+          </tr>
+          <tr>
+            <td>Name</td>
+            <td>{{sname}}</td>
+          </tr>
+          <tr>
+            <td>Qualification</td>
+            <td>{{qualification}}</td>
+          </tr>
+          <tr>
+            <td>Specialization</td>
+            <td>{{specialization}}</td>
+          </tr>
+          <tr>
+            <td>Booked Date </td>
+            <td>{{bdate1}}</td>
+          </tr>
+          <tr>
+            <td>Token No.</td>
+            <td>{{tno}}</td>
+          </tr>
+          <tr>
+            <td>Transaction Date </td>
+            <td>{{cdate}}</td>
+          </tr>
+          <tr>
+            <td>Staff ID </td>
+            <td>{{staffid}}</td>
+          </tr>
+        </table>
+    </form>      <p>&nbsp;</p></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="38"></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td valign="top"><form name="form2" method="post" action="opcancel3">{% csrf_token %}
+      <input type="submit" name="Submit" value="Cancel Booking">
+	  <input type="hidden" name="t1" value="{{s1}}">
+    </form></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="218"></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="25"></td>
+    <td>&nbsp;</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+</body>
+</html>

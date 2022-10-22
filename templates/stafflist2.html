@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+{% include "p2.html" %}
+
+<table width="1307" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="405" height="112" valign="top"><p><strong>Staff List </strong></p>      
+      <form name="form1" method="post" action="stafflist2">
+        {% csrf_token %}
+        {% if l %}  
+          <table width="397" border="0">
+          <tr>
+            <td>Select Designation</td>
+            <td><select name="c1" id="c1">
+			<option>{{s1}}</option>
+			{% for a in l %}
+			<option>{{a}}</option>
+			{% endfor %}
+            </select></td>
+            <td><input type="submit" name="Submit" value="   Next==>>"></td>
+          </tr>
+          </table>
+        {% else %}<b>No Hospitals Registered...</b> {% endif %}
+    </form></td> 
+    <td width="891" rowspan="2" valign="top"><p><strong>Staff Details </strong><strong></strong></p>
+      <p>{% if records1 %} </p>
+      <table border="0" width="100%">
+        <tr>
+          <th>Staff ID</th>
+          <th>Name</th>
+          <th>House Name</th>
+          <th>Place</th>
+          <th>Pin</th>
+          <th>Phone</th>
+          <th>Gender</th>
+          <th>Qualification</th>
+		  <th>Experience</th>
+		  <th>Hospital ID</th>
+        </tr>
+  {% for staffid,name,hname,place,pin,ph,gender,qualification,experience,hospid in records1 %}
+  <tr align="center">
+    <td>{{staffid}}</td>
+    <td>{{name}}</td>
+    <td>{{hname}}</td>
+    <td>{{place}}</td>
+    <td>{{pin}}</td>
+    <td>{{ph}}</td>
+    <td>{{gender}}</td>
+    <td>{{qualification}}</td>
+	<td>{{experience}}</td>
+	<td>{{hospid}}</td>
+  </tr>
+  {% endfor %}
+      </table>
+      {% else %}<b><font color="#FF0000">No Staff Registered</font></b>{% endif %}&nbsp;
+      <p></p>
+    <p></p></td>
+    <td width="11">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="190"></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="15"></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+</body>
+</html>

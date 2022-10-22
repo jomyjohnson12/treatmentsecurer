@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<script>
+function abc()
+{
+if(document.form1.t1.value=="")
+{
+alert("Please enter the Phone No.");
+return(false);
+}
+
+if(document.form1.t1.value.length<10)
+{
+alert("Phone No. should be min 10 digits");
+return(false);
+}
+}
+
+</script>
+<body>
+{% include "p3.html" %}
+<table width="1282" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="9" height="13"></td>
+    <td width="348"></td>
+    <td width="50"></td>
+    <td width="589"></td>
+    <td width="286"></td>
+  </tr>
+  <tr>
+    <td height="186"></td>
+    <td valign="top"><p><strong>Patients List</strong>(Search By Phone)
+     </p>
+      <form name="form1" onSubmit="return abc()" method="post" action="plist22">{% csrf_token %}
+        <table width="348" border="0">
+          <tr>
+            <td width="110">Enter Phone</td>
+            <td width="149"><input name="t1" type="text" id="t1" onKeyPress="return numbers(event)" value="{{s1}}"></td>
+            <td width="67"><input type="submit" name="Submit" value="View"></td>
+          </tr>
+        </table>
+      </form>      <p>&nbsp; </p></td>
+    <td>&nbsp;</td>
+    <td rowspan="2" valign="top"> <p><strong>Patient Details </strong></p>
+  {% if records %}  <table width="310" border="0">
+        <tr>
+          <td width="134">Patient ID </td>
+          <td width="160">{{pid}}</td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td>{{name}}</td>
+        </tr>
+        <tr>
+          <td>House Name </td>
+          <td>{{hname}}</td>
+        </tr>
+        <tr>
+          <td>Place</td>
+          <td>{{place}}</td>
+        </tr>
+        <tr>
+          <td>Pin</td>
+          <td>{{pin}}</td>
+        </tr>
+        <tr>
+          <td>Phone</td>
+          <td>{{ph}}</td>
+        </tr>
+        <tr>
+          <td>District</td>
+          <td>{{district}}</td>
+        </tr>
+        <tr>
+          <td>Gender</td>
+          <td>{{gender}}</td>
+        </tr>
+        <tr>
+          <td>Age</td>
+          <td>{{age}}</td>
+        </tr>
+        <tr>
+          <td>Adhar No </td>
+          <td>{{adharno}}</td>
+        </tr>
+      </table>  {% else %} <b>No Patient Found</b> {% endif %}   <p>&nbsp; </p></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="133"></td>
+    <td>&nbsp;</td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+</body>
+</html>

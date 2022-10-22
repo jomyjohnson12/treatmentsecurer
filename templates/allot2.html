@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+{% include "p2.html" %}
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="14" height="26">&nbsp;</td>
+    <td width="486">&nbsp;</td>
+    <td width="49">&nbsp;</td>
+    <td width="360">&nbsp;</td>
+    <td width="35">&nbsp;</td>
+    <td width="296">&nbsp;</td>
+    <td width="63">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="133">&nbsp;</td>
+    <td rowspan="3" valign="top"><p><strong>Allot Lab Test To Hospital</strong></p>
+      <form name="form1" method="post" action="allot2">
+        {% csrf_token %}
+        <table width="486" border="0">
+          <tr>
+            <td width="144">Select Hospital ID </td>
+            <td width="188"><select name="c1" id="c1">
+			<option>{{s1}}</option>
+			{% for a in l %}
+			<option>{{a}}</option>
+			{% endfor %}
+            </select></td>
+            <td width="132"><input type="submit" name="Submit" value="Details"></td>
+          </tr>
+        </table>
+      </form>      
+      <p><strong>Hospital Details</strong></p>
+      <table width="368" border="0">
+        <tr>
+          <td>Hospital ID </td>
+          <td>{{s1}}</td>
+        </tr>
+        <tr>
+          <td width="176">Location</td>
+          <td width="176">{{location}}</td>
+        </tr>
+        <tr>
+          <td>Place</td>
+          <td>{{place}}</td>
+        </tr>
+        <tr>
+          <td>Pin</td>
+          <td>{{pin}}</td>
+        </tr>
+        <tr>
+          <td>Phone</td>
+          <td>{{phone}}</td>
+        </tr>
+        <tr>
+          <td>District</td>
+          <td>{{district}}</td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>{{email}}</td>
+        </tr>
+        <tr>
+          <td>Hospital Type </td>
+          <td>{{htype}}</td>
+        </tr>
+      </table>      
+      <p>&nbsp;  </p></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td rowspan="3" valign="top"><p><strong>Alloted Test</strong></p>      <p>{% if n %}
+	  {% for x in n %}
+	  {{x}}<br>
+	  {% endfor %}
+	  
+	{% else %} No Test alloted {% endif %}
+	  
+	&nbsp; </p>      <p>&nbsp;</p></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="72">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td valign="top"><form name="form2" method="post" action="allot3">{% csrf_token %}
+      {% if m %}  <table width="360" border="0">
+          <tr>
+            <td width="126">S<strong>elect Test Name </strong></td>
+            <td width="120"><select name="c2" id="c2">
+		  {% for b in m %}
+		  <option>{{b}}</option>
+		  {% endfor %} 
+          </select></td>
+            <td width="92"><input type="submit" name="Submit2" value="Allot==&gt;&gt;"></td>
+          </tr>
+        </table>{% else %}<b>No Test Registered</b> {% endif %}<input type="hidden" name="c1" value="{{s1}}">
+    </form></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="174">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="2"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+</body>
+</html>

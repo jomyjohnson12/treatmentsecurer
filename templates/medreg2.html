@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<script>
+function abc()
+{
+if(document.form1.t1.value=="" || document.form1.t3.value=="" || document.form1.t4.value=="")
+{
+alert("Please Enter the Details.....");
+return(false);
+
+}
+
+}
+
+</script>
+
+<body>
+{% include "p2.html" %}
+<table width="1290" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="247" height="21">&nbsp;</td>
+  <td width="803">&nbsp;</td>
+    <td width="240">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="283"></td>
+    <td valign="top"><p align="center"><strong>Medicine Registration</strong></p>
+    <form name="form1" method="post" onSubmit="return abc()" action="medreg2">{% csrf_token %}
+        <table width="345" border="0" align="center">
+          <tr>
+            <td width="142">Medcine Name</td>
+            <td width="187">{{s1}}</td>
+          </tr>
+          <tr>
+            <td>Medicine Type </td>
+            <td>{{s2}}</td>
+          </tr>
+          <tr>
+            <td>Company</td>
+            <td>{{s3}}</td>
+          </tr>
+          <tr>
+            <td colspan="2">Content</td>
+          </tr>
+          <tr>
+            <td colspan="2"><textarea name="t4" cols="60" id="t4">{{s4}}</textarea></td>
+          </tr>
+          <tr>
+            <td>Medicine Unit </td>
+            <td>{{s5}}</td>
+          </tr>
+          <tr>
+            <td colspan="2"><div align="center">
+                {{msg}}</div></td>
+          </tr>
+        </table>
+    </form>      <p>&nbsp; </p></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="15"></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+</body>
+</html>

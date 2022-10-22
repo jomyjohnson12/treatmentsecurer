@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<script>
+function abc()
+{
+if(document.form1.t1.value=="" || document.form1.t2.value=="" || document.form1.t3.value=="" || document.form1.t4.value==""|| document.form1.t5.value==""|| document.form1.t8.value=="")
+{
+alert("Please Enter the Details.....");
+return(false);
+
+}
+
+if(document.form1.t4.value.length<6)
+{
+alert("Pin should be  6 digits");
+return(false);
+
+}
+
+if(document.form1.t5.value.length<10)
+{
+alert("Phone should be  min 10 digits");
+return(false);
+
+}
+
+}
+
+</script>
+
+<body>
+{% include "p2.html" %}
+
+<table width="1293" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="134" height="450">&nbsp;</td>
+  <td width="552" valign="top"><p align="center"><strong>Staff Registration</strong></p>    <p align="center"><strong>(Non Doctor) </strong></p>    <form name="form1" onSubmit="return abc()" method="post" action="staffreg2">
+  {% csrf_token %}
+        <table width="399" border="0" align="center">
+          <tr>
+            <td width="179">Name</td>
+            <td width="204">{{s1}}</td>
+          </tr>
+          <tr>
+            <td>House Name </td>
+            <td>{{s2}}</td>
+          </tr>
+          <tr>
+            <td>Place</td>
+            <td>{{s3}}</td>
+          </tr>
+          <tr>
+            <td>Pin</td>
+            <td>{{s4}}</td>
+          </tr>
+          <tr>
+            <td>Phone</td>
+            <td>{{s5}}</td>
+          </tr>
+          <tr>
+            <td>Gender</td>
+            <td>{{s6}}</td>
+          </tr>
+          <tr>
+            <td>Qualification</td>
+            <td>{{s7}}</td>
+          </tr>
+          <tr>
+            <td colspan="2"><div align="center">Experience
+            </div></td>
+          </tr>
+          <tr>
+            <td colspan="2"><div align="center">
+              <textarea name="t8" cols="40" id="t8">{{s8}}</textarea>
+            </div></td>
+          </tr>
+          <tr>
+            <td>Designation            </td>
+          <td>{{s9}}</td>
+          </tr>
+          <tr>
+            <td>Select Hospital             </td>
+          <td>{{s10}}</td>
+          </tr>
+          <tr>
+            <td colspan="2"><strong><font color="#FF0000">Staff Details Registered..The staff ID is {{staffid}} and Password is the same</font></strong> </td>
+          </tr>
+        </table>
+    </form>    <p>&nbsp; </p></td>
+    <td width="25">&nbsp;</td>
+  <td width="561" valign="top"><p><strong>Hospital Details</strong></p>
+  {% if records %}
+    <p><table border="0" width="100%">
+	<tr><th>Hospital ID</th><th>Location</th><th>Place</th><th>District</th><th>Hospital Type</th></tr>
+	
+	{% for hospid,location,place,district,htype in records %}
+	<tr align="center"><td>{{hospid}}</td>
+	<td>{{location}}</td>
+	<td>{{place}}</td>
+	<td>{{district}}</td>
+	<td>{{htype}}</td>
+	</tr>
+	{% endfor %} 
+	
+	
+	</table>{% else %}<b><font color="#FF0000">No Hospitals Registered</font></b>{% endif %}&nbsp; </p></td>
+    <td width="21">&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<script>
+function abc()
+{
+if(document.form1.t5.value=="" ||  document.form1.t7.value=="")
+{
+alert("Please fill All");
+return(false);
+} 
+
+}
+
+</script>
+<body>
+{% include "p3.html" %}
+<table width="1254" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="105" height="17"></td>
+    <td width="506"></td>
+    <td width="28"></td>
+    <td width="582"></td>
+    <td width="33"></td>
+  </tr>
+  <tr>
+    <td height="23"></td>
+    <td rowspan="2" valign="top"><p align="center"><strong>Register/Update Op Days And Time </strong></p>
+      <form name="form1" onSubmit="return abc()" method="post" action="opdaysreg2">{% csrf_token %}
+        <table width="438" border="0" align="center">
+          <tr>
+            <td width="152">Select Day </td>
+            <td width="270"><select name="t1" id="t1">
+              <option>Sunday</option>
+              <option>Monday</option>
+              <option>Tuesday</option>
+              <option>Wednesday</option>
+              <option>Thursday</option>
+              <option>Friday</option>
+              <option>Saturday</option>
+            </select></td>
+          </tr>
+          <tr>
+            <td>From Time</td>
+            <td><select name="t2" id="t2">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+              <option>11</option>
+              <option>12</option>
+            </select>
+              Hr 
+              <select name="t3" id="t3">
+                <option>00</option>
+                <option>05</option>
+                <option>10</option>
+                <option>15</option>
+                <option>20</option>
+                <option>25</option>
+                <option>30</option>
+                <option>35</option>
+                <option>40</option>
+                <option>45</option>
+                <option>50</option>
+                <option>55</option>
+              </select> 
+              Min 
+              <select name="t4" id="t4">
+                <option>Am</option>
+                <option>Pm</option>
+              </select></td>
+          </tr>
+          <tr>
+            <td>Num Of Hrs / Mins </td>
+            <td><input name="t5" type="text" id="t5" onKeyPress="return numbers(event)" size="10" maxlength="2">
+              <input name="t6" type="radio" value="Hrs" checked>
+            Hrs 
+            <input name="t6" type="radio" value="Mins">
+            Mins </td>
+          </tr>
+          <tr>
+            <td height="37">Num Of Patents </td>
+            <td><input name="t7" type="text" id="t7" onKeyPress="return numbers(event)" maxlength="3"></td>
+          </tr>
+          <tr>
+            <td colspan="2"><div align="center">
+              <input type="submit" name="Submit" value="Submit">
+              <input type="reset" name="Submit2" value="Reset">
+            </div></td>
+          </tr>
+        </table>
+      </form>      <p>&nbsp; </p></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="261"></td>
+    <td>&nbsp;</td>
+    <td valign="top"><p><strong>Fixed Op Days</strong></p>
+      <p>{% if records %} </p>
+      <table border="0" width="100%">
+        <tr>
+          <th>Op Day</th>
+          <th>From Time</th>
+          <th>Duration</th>
+          <th>Num Of Patients</th>
+         
+        </tr>
+  {% for opday,ftime,duration,npatient in records %}
+  <tr align="center">
+    <td>{{opday}}</td>
+    <td>{{ftime}}</td>
+    <td>{{duration}}</td>
+    <td>{{npatient}}</td>
+    
+  </tr>
+  {% endfor %}
+      </table>
+      {% else %}<b><font color="#FF0000">No Op Days Fixed....</font></b>{% endif %}&nbsp;
+      <p></p>
+    <p>&nbsp; </p></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="59"></td>
+    <td>&nbsp;</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+</body>
+</html>

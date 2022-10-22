@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<script>
+function abc()
+{
+if(document.form1.t0.value=="")
+{
+alert("Please enter the Patient ID");
+return(false);
+}
+
+}
+
+</script>
+<body>
+{% include "p3.html" %}
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="400" height="106" valign="top"><p><strong>Op Booking</strong></p>
+      <form name="form1" onSubmit="return abc()" method="post" action="opbooking2">{% csrf_token %}
+        <table width="394" border="0">
+          <tr>
+            <td width="113">Patient ID </td>
+            <td width="158"><input name="t0" type="text" id="t0" value="{{s0}}"></td>
+            <td width="101"><input type="submit" name="Submit" value="View"></td>
+          </tr>
+        </table>
+      </form>      <p>&nbsp;</p></td>
+    <td width="26">&nbsp;</td>
+    <td width="790" rowspan="2" valign="top">{% if records %}
+      <table width="602" border="0">
+        <tr>
+          <td colspan="2"><strong>Patient Details </strong></td>
+          <td colspan="2"><strong>Hospital Details </strong></td>
+        </tr>
+        <tr>
+          <td width="149">ID</td>
+          <td width="161">{{s0}}</td>
+          <td width="141">Hospital ID </td>
+          <td width="133">{{hospid}}</td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td>{{name}}</td>
+          <td>Location</td>
+          <td>{{location1}}</td>
+        </tr>
+        <tr>
+          <td>House Name </td>
+          <td>{{hname}}</td>
+          <td>Place</td>
+          <td>{{place1}}</td>
+        </tr>
+        <tr>
+          <td>Place</td>
+          <td>{{place}}</td>
+          <td>Pin</td>
+          <td>{{pin1}}</td>
+        </tr>
+        <tr>
+          <td>Pin</td>
+          <td>{{pin}}</td>
+          <td>Phone</td>
+          <td>{{phone1}}</td>
+        </tr>
+        <tr>
+          <td>Phone</td>
+          <td>{{ph}}</td>
+          <td>District</td>
+          <td>{{district1}}</td>
+        </tr>
+        <tr>
+          <td>District</td>
+          <td>{{district}}</td>
+          <td>Email</td>
+          <td>{{email1}}</td>
+        </tr>
+        <tr>
+          <td>Gender</td>
+          <td>{{gender}}</td>
+          <td>Hospital Type </td>
+          <td>{{htype1}}</td>
+        </tr>
+        <tr>
+          <td>Age</td>
+          <td>{{age}}</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>Adhar No </td>
+          <td>{{adharno}}</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>Regdate</td>
+          <td>{{regdate}}</td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>Hospital ID </td>
+          <td>{{hospid}}</td>
+          <td colspan="2"><form name="form2" method="post" action="sopbook1">{% csrf_token %}
+            <input type="submit" name="Submit2" value="Continue==&gt;&gt;"><input type="hidden" name="t0" value="{{s0}}">
+          </form></td>
+        </tr>
+      </table> 
+    {% else %} <b><br><br><br><br>Invalid Patient ID </b>  {% endif %}    <p>&nbsp; </p></td>
+    <td width="87">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="261">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="39">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

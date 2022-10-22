@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style>
+
+.navbar {
+  overflow: hidden;
+  background-color:#000000;
+  padding-left: 15%;
+}
+
+.navbar a {
+  float: left;
+  font-size: 14px;
+  color:#FFFF00;
+  text-align: center;
+  padding:14px;
+  text-decoration: none;
+  outline: none;
+  font-weight:bold;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 14px;  
+  border: none;
+  outline: none;
+  color:#FFFFFF;
+  font-weight: bold;
+  padding: 14px 12px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color:#003366;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color:#CCCCCC;
+  min-width: 140px;
+  
+  box-shadow: 0px 8px 12px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 12px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color:#FFFFFF;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+</style>
+
+</head>
+<body>
+<div class="navbar">
+  <a href="patientchangepassword1">Change Password</a>
+   <a href="patientprofile">My Profile</a>
+  <div class="dropdown">
+    <button class="dropbtn">Op Booking/ Cancellation
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="opbook1">New Booking</a>
+      <a href="opcancel1">Cancel Booking</a>
+      
+    </div>
+  </div> 
+  
+  
+  <div class="dropdown">
+    <button class="dropbtn">My Booking Details
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="patientcomingbooking">Coming Booking</a>
+      <a href="patientprevbooking">Previous Booking</a>
+	  <a href="patientcomingcbooking">Coming Cancelled Booking</a>
+	  <a href="patientpreviouscbooking">Previous Cancelled Booking</a>
+    </div>
+  </div> 
+
+  <div class="dropdown">
+    <button class="dropbtn">Views
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      
+      <a href="mycasefile">My Case File</a>
+      <a href="mylabtestresult2">My Lab Test</a>
+	  <a href="mymedsalelist2">My Medicine Purchase List</a>	 
+    </div>
+  </div> 
+  
+  <div class="dropdown">
+    <button class="dropbtn">Compaint
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      
+      <a href="complaint1">Send</a>
+	  <a href="viewreply1">View Reply</a>	 
+    </div>
+  </div> 
+   <a href="patientsignout">Signout</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<script>
+function abc()
+{
+if(document.form1.t1.value=="" || document.form1.t2.value=="" ||document.form1.t3.value=="" ||document.form1.t4.value=="" ||document.form1.t5.value=="" ||document.form1.t8.value=="" ||document.form1.t9.value=="" )
+{
+alert("Please Fill the Details");
+return(false);
+
+}
+if(document.form1.t4.value.length<6)
+{
+alert("Pin should be  6 digits");
+return(false);
+
+}
+
+if(document.form1.t5.value.length<10)
+{
+alert("Phone should be  min 10 digits");
+return(false);
+
+}
+
+if(document.form1.t9.value.length<12)
+{
+alert("Adhar Num. Should be   12 digits");
+return(false);
+
+}
+
+}
+
+</script>
+<body>
+{% include "p3.html" %}
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="321" height="13"></td>
+    <td width="629"></td>
+    <td width="370"></td>
+  </tr>
+  <tr>
+    <td height="354"></td>
+    <td valign="top"><p align="center"><strong>Patient Registration</strong></p>
+      <form name="form1" method="post" onSubmit="return abc()" action="patientreg2">{% csrf_token %}
+        <table width="379" border="0" align="center">
+          <tr>
+            <td width="189">Name</td>
+            <td width="174"><input name="t1" type="text" id="t1" onKeyPress="return alphabets(event)"></td>
+          </tr>
+          <tr>
+            <td>House Name </td>
+            <td><input name="t2" type="text" id="t2"></td>
+          </tr>
+          <tr>
+            <td>Place</td>
+            <td><input name="t3" type="text" id="t3"  onKeyPress="return alphabets(event)"></td>
+          </tr>
+          <tr>
+            <td>Pin</td>
+            <td><input name="t4" type="text" id="t4"  onKeyPress="return numbers(event)" maxlength="6"></td>
+          </tr>
+          <tr>
+            <td>Phone</td>
+            <td><input name="t5" type="text" id="t5"  onKeyPress="return numbers(event)" maxlength="13"></td>
+          </tr>
+          <tr>
+            <td>District</td>
+            <td><select name="t6" id="t6">
+              <option>Thiruvananthapuram</option>
+              <option>Kollam</option>
+              <option>Pathanamthitta</option>
+              <option>Alapuzha</option>
+              <option>Kottayam</option>
+              <option>Idukki</option>
+              <option>Thrissur</option>
+              <option>Kozhikkod</option>
+              <option>Palakad</option>
+              <option>Malappuram</option>
+              <option>Vayanad</option>
+              <option>Kasarkode</option>
+              <option>Kannur</option>
+              <option>Ernakullam</option>
+            </select></td>
+          </tr>
+          <tr>
+            <td>Gender</td>
+            <td><input name="t7" type="radio" value="M">
+              Male 
+              <input name="t7" type="radio" value="F" checked>
+              female</td>
+          </tr>
+          <tr>
+            <td>Age</td>
+            <td><input name="t8" type="text" id="t8"  onKeyPress="return numbers(event)" maxlength="3"></td>
+          </tr>
+          <tr>
+            <td>Adhar No </td>
+            <td><input name="t9" type="text" id="t9"  onKeyPress="return numbers(event)" maxlength="12"></td>
+          </tr>
+          <tr>
+            <td colspan="2"><div align="center">
+              <input type="submit" name="Submit" value="Submit">
+              <input type="reset" name="Submit2" value="Reset">
+            </div></td>
+          </tr>
+        </table>
+      </form>      <p>&nbsp; </p></td>
+    <td></td>
+  </tr>
+</table>
+</body>
+</html>

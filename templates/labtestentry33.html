@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<script>
+function abc()
+{
+if(document.form1.t0.value=="")
+{
+alert("Please enter the Patient ID");
+return(false);
+}
+
+}
+
+</script>
+<body>
+{% include "p3.html" %}
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="400" height="125" valign="top"><p><strong>Labtest Entry </strong></p>
+      <form name="form1" onSubmit="return abc()" method="post" action="labtestentry2">{% csrf_token %}
+        <table width="394" border="0">
+          <tr>
+            <td width="113">Patient ID </td>
+            <td width="158"><input name="t0" type="text" id="t0" value="{{s0}}"></td>
+            <td width="101"><input type="submit" name="Submit" value="View"></td>
+          </tr>
+        </table>
+      </form>      <p>{% if records %}<strong> Case File</strong> </p>
+      <p>{% if records22 %} </p>
+      <table border="0" width="100%">
+        <tr>
+          <th>Entry No </th>
+          <th>Dr. Comment/Lab Test </th>
+          <th>Dr ID</th>
+          <th>Entry Date</th>
+        </tr>
+  {% for eno,drcomment,drid,edate in records22 %}
+  <tr align="center">
+    <td>{{eno}}</td>
+    <td><textarea name="textarea2"  cols="15">{{drcomment}}</textarea></td>
+    <td>{{drid}}</td>
+    <td>{{edate}}</td>
+  </tr>
+  {% endfor %}
+      </table>
+      {% else %} <b>No Details Entered.....</b>{% endif %} {% endif %}</td>
+    <td width="263" rowspan="3" valign="top">{% if records %}
+      <table width="241" border="0">
+        <tr>
+          <td colspan="2"><strong>Patient Details </strong></td>
+        </tr>
+        <tr>
+          <td width="115">ID</td>
+          <td width="116">{{s0}}</td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td>{{name}}</td>
+        </tr>
+        <tr>
+          <td>House Name </td>
+          <td>{{hname}}</td>
+        </tr>
+        <tr>
+          <td>Place</td>
+          <td>{{place}}</td>
+        </tr>
+        <tr>
+          <td>Pin</td>
+          <td>{{pin}}</td>
+        </tr>
+        <tr>
+          <td>Phone</td>
+          <td>{{ph}}</td>
+        </tr>
+        <tr>
+          <td>District</td>
+          <td>{{district}}</td>
+        </tr>
+        <tr>
+          <td>Gender</td>
+          <td>{{gender}}</td>
+        </tr>
+        <tr>
+          <td>Age</td>
+          <td>{{age}}</td>
+        </tr>
+        <tr>
+          <td>Adhar No </td>
+          <td>{{adharno}}</td>
+        </tr>
+        <tr>
+          <td>Regdate</td>
+          <td>{{regdate}}</td>
+        </tr>
+        <tr>
+          <td>Hospital ID </td>
+          <td>{{hospid}}</td>
+        </tr>
+        <tr>
+          <td colspan="2"><strong>Hospital Details </strong></td>
+        </tr>
+        <tr>
+          <td>Hospital ID </td>
+          <td>{{hospid}}</td>
+        </tr>
+        <tr>
+          <td>Location</td>
+          <td>{{location1}}</td>
+        </tr>
+        <tr>
+          <td>Place</td>
+          <td>{{place1}}</td>
+        </tr>
+        <tr>
+          <td>Pin</td>
+          <td>{{pin1}}</td>
+        </tr>
+        <tr>
+          <td>Phone</td>
+          <td>{{phone1}}</td>
+        </tr>
+        <tr>
+          <td>District</td>
+          <td>{{district1}}</td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>{{email1}}</td>
+        </tr>
+        <tr>
+          <td>Hospital Type </td>
+          <td>{{htype1}}</td>
+        </tr>
+      </table>
+      {% else %} <b><br><br><br><br>Invalid Patient ID </b>  {% endif %}    
+    <p>&nbsp; </p></td>
+    <td width="458" rowspan="3" valign="top">{% if records %}
+      <p><strong>Alloted Test Details</strong></p>      <p>{% if records1 %} </p>      <table border="0" width="100%">
+        <tr>
+          <th>Test Name</th>
+          <th>Test Type</th>
+          <th>Test Content</th>
+         
+      </tr>
+    {% for tname,ttype,tcontent in records1 %}
+    <tr align="center">
+      <td>{{tname}}<form action="labtestentry3" method="post">{% csrf_token %}<input type="submit" value="Select"><input type="hidden" name="t0" value="{{s0}}"><input type="hidden" name="t1" value="{{tname}}"></form></td>
+      <td>{{ttype}}</td>
+      <td>{{tcontent}}</td>
+      
+  </tr>
+    {% endfor %}
+      </table>
+      {% else %}<b><font color="#FF0000">No Lab Test Alloted</font></b>{% endif %}&nbsp; {% endif %}
+      <p>&nbsp; </p></td>
+    <td width="182" rowspan="2" valign="top">{% if records2 %}<p><strong>Selected Test</strong></p>
+      <table width="100%" border="0" bgcolor="#66FFFF">
+        <tr>
+          <th>Item No</th>
+          <th>Test Name</th>
+        </tr>
+  {% for itemno,tname in records2 %}
+  <tr align="center">
+    <td>{{itemno}}
+        <form action="labtestentry33" method="post">
+          {% csrf_token %}
+            <input name="submit" type="submit" value="Remove">
+            <input type="hidden" name="t0" value="{{s0}}">
+            <input type="hidden" name="t1" value="{{s1}}">
+			<input type="hidden" name="t2" value="{{itemno}}">
+      </form></td>
+    
+    <td>{{tname}}</td>
+  </tr>
+  {% endfor %}
+    </table>      
+      <form name="form2" method="post" action="labtestentry4">{% csrf_token %}
+        <input type="submit" name="Submit2" value="Register Test">
+        <input type="hidden" name="t0" value="{{s0}}">    
+      </form>    {% endif %}  <p>&nbsp; </p></td>
+  </tr>
+  <tr>
+    <td height="242">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="293">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="39">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

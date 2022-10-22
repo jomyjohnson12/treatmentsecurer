@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+	{% load static %}
+
+<style>
+    #bg
+    {
+        background-size: auto;
+		
+		background-image:url('{% static "back/a4.jpg" %}');
+		background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top;
+        background-attachment: fixed;
+
+
+    }
+
+</style>
+
+
+
+<style type="text/css">
+
+input[type=text],input[type=password]{
+border-radius: 7px;
+padding:7px;
+background-color:#66FFFF
+color:#FF0000;
+
+
+
+}
+input[type=submit],input[type=reset]{
+padding:10px;
+background-color:#FFFFFF;
+font-size: 14px;
+margin: 10px;
+width:auto;
+border-radius:20px;
+border: 1px solid #ff7101;
+color:#000000;
+
+}
+
+textarea {
+	
+	border: 3px solid #cccccc;
+	padding: 5px;
+	font-family: Tahoma, sans-serif;
+	background-image: url(bg.gif);
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	border-radius: 8px;
+	background-color:#FFFFCC;
+	color:#FF0000;
+}
+
+select {
+	
+	border: 3px solid #cccccc;
+	padding: 5px;
+	font-family: Tahoma, sans-serif;
+	background-image: url(bg.gif);
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	border-radius: 8px;
+	background-color:#FFFFCC;
+	color:#FF0000;
+}
+.style1 {color: #FFFFFF}
+</style>
+
+<script  language="javascript">
+
+function numbers(event)
+{
+
+var charCode=event.keyCode;
+if(charCode>31&&(charCode<48||charCode>57))
+return false;
+
+}
+function alphabets(event)
+{
+var charCode=event.keyCode;
+if((charCode>=65&&charCode<=90)||(charCode>=97&&charCode<=122)||charCode==32)
+return true;
+else
+return false;
+}
+
+function email(event)
+{
+var charCode=event.keyCode;
+if((charCode>=65&&charCode<=90)||charCode==32)
+return false;
+else
+return true;
+}
+
+
+
+</script>
+
+<body id="bg">
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="1326" height="19" valign="top" bgcolor="#003366"><!--DWLayoutEmptyCell-->&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="133" valign="top">
+{% load static %}<img src='{% static "back/head.jpg" %}'
+ width="100%" height="117"></td>
+  </tr>
+  <tr>
+    <td height="17" valign="top" bgcolor="#FFFF99">{% if aa %} {% include "staffmenu1.htm" %} {% endif %} {% if bb %} {% include "staffmenu2.htm" %} {% endif %} {% if cc %} {% include "staffmenu3.htm" %} {% endif %} {% if dd %} {% include "staffmenu4.htm" %} {% endif %} </td>
+  </tr>
+</table>
+</body>
+</html>

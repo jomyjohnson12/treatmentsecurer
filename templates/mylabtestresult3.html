@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<script>
+function abc()
+{
+if(document.form1.t0.value=="")
+{
+alert("Please enter the Patient ID");
+return(false);
+}
+
+}
+
+</script>
+<body>
+{% include "p4.html" %}
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="400" height="125" valign="top"><p><strong>Labtest Result </strong></p>
+      <p><strong>Test No - {{s1}} </strong>
+      <form name="form2" method="post" action="down11">{% csrf_token %}
+        <input type="submit" name="Submit2" value="Download Result"> </p><input type="hidden" name="t1" value="{{rfile}}"><br>
+        <strong>Selected Lab Test </strong>
+      </form>
+      <p>{% for a in l %}
+	  {{a}}<br>
+	  {% endfor %}&nbsp; </p>      
+      <p></p></td>
+    <td width="263" rowspan="2" valign="top"><table width="241" border="0">
+        <tr>
+          <td colspan="2"><strong>Patient Details </strong></td>
+        </tr>
+        <tr>
+          <td width="115">ID</td>
+          <td width="116">{{s0}}</td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td>{{name}}</td>
+        </tr>
+        <tr>
+          <td>House Name </td>
+          <td>{{hname}}</td>
+        </tr>
+        <tr>
+          <td>Place</td>
+          <td>{{place}}</td>
+        </tr>
+        <tr>
+          <td>Pin</td>
+          <td>{{pin}}</td>
+        </tr>
+        <tr>
+          <td>Phone</td>
+          <td>{{ph}}</td>
+        </tr>
+        <tr>
+          <td>District</td>
+          <td>{{district}}</td>
+        </tr>
+        <tr>
+          <td>Gender</td>
+          <td>{{gender}}</td>
+        </tr>
+        <tr>
+          <td>Age</td>
+          <td>{{age}}</td>
+        </tr>
+        <tr>
+          <td>Adhar No </td>
+          <td>{{adharno}}</td>
+        </tr>
+        <tr>
+          <td>Regdate</td>
+          <td>{{regdate}}</td>
+        </tr>
+        <tr>
+          <td>Hospital ID </td>
+          <td>{{hospid}}</td>
+        </tr>
+        <tr>
+          <td colspan="2"><strong>Hospital Details </strong></td>
+        </tr>
+        <tr>
+          <td>Hospital ID </td>
+          <td>{{hospid}}</td>
+        </tr>
+        <tr>
+          <td>Location</td>
+          <td>{{location1}}</td>
+        </tr>
+        <tr>
+          <td>Place</td>
+          <td>{{place1}}</td>
+        </tr>
+        <tr>
+          <td>Pin</td>
+          <td>{{pin1}}</td>
+        </tr>
+        <tr>
+          <td>Phone</td>
+          <td>{{phone1}}</td>
+        </tr>
+        <tr>
+          <td>District</td>
+          <td>{{district1}}</td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>{{email1}}</td>
+        </tr>
+        <tr>
+          <td>Hospital Type </td>
+          <td>{{htype1}}</td>
+        </tr>
+      </table>
+      <p>&nbsp; </p></td>
+    <td width="458" rowspan="2" valign="top"><p><strong>Resulted Test Details</strong></p>      
+      <p>{% if records1 %} </p>      <table border="0" width="100%">
+        <tr>
+          <th>Lab Test No</th>
+          <th>HospID</th>
+          <th>Entry Date</th>
+         
+      </tr>
+    {% for ltestno,hospid,edate in records1 %}
+    <tr align="center">
+      <td>{{ltestno}}<form action="mylabtestresult3" method="post">{% csrf_token %}<input type="submit" value="Select"><input type="hidden" name="t0" value="{{s0}}"><input type="hidden" name="t1" value="{{ltestno}}"></form></td>
+      <td>{{hospid}}</td>
+      <td>{{edate}}</td>
+      
+  </tr>
+    {% endfor %}
+      </table>
+      {% else %}<b><font color="#FF0000">No Resulted Lab Test</font></b>{% endif %} 
+      <p>&nbsp; </p></td>
+    <td width="182">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="535">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="39">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

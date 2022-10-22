@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<script>
+function abc()
+{
+if(document.form1.file.value=="")
+{
+alert("Please select result file");
+return(false);
+}
+}
+
+
+</script>
+<body>
+{% include "p3.html" %}
+<table width="1294" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="27" height="263">&nbsp;</td>
+    <td width="540" rowspan="2" valign="top"><p><strong>Lab Test Result Entry</strong></p>      <p>{% if records %} </p>      <table border="0" width="100%">
+        <tr>
+          <th>Lab Test No (Click) </th>
+          <th>Patient ID</th>
+          <th>Staff ID</th>
+          <th>Entry Date</th>
+        </tr>
+  {% for ltestno,pid,staffid,edate  in records %}
+  <tr align="center">
+    <td><form action="labtestrentry2" method="post">{%csrf_token %}<input type="submit" value="<<{{ltestno}}>>"><input type="hidden" name="t1" value="{{ltestno}}"></form></td>
+    <td>{{pid}}</td>
+    <td>{{staffid}}</td>
+    <td>{{edate}}</td>
+     </tr>
+  {% endfor %}
+      </table>
+      {% else %} <b>No Lab Test Entered.....</b>{% endif %}
+    <p>&nbsp; </p></td>
+    <td width="14">&nbsp;</td>
+    <td width="297" rowspan="2" valign="top"><strong>Details
+    </strong>      <table width="291" border="0">
+        <tr>
+          <td width="103">Lab Test No. </td>
+          <td width="172">{{s1}}</td>
+        </tr>
+        <tr>
+          <td>Patient ID</td>
+          <td>{{pid}}</td>
+        </tr>
+        <tr>
+          <td>Staff ID </td>
+          <td>{{staffid}}</td>
+        </tr>
+        <tr>
+          <td>Entry Date </td>
+          <td>{{edate}}</td>
+        </tr>
+        <tr>
+          <td colspan="2">Patient Details </td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td>{{name}}</td>
+        </tr>
+        <tr>
+          <td>House Name </td>
+          <td>{{hname}}</td>
+        </tr>
+        <tr>
+          <td>Place</td>
+          <td>{{place}}</td>
+        </tr>
+        <tr>
+          <td>Pin</td>
+          <td>{{pin}}</td>
+        </tr>
+        <tr>
+          <td>Phone</td>
+          <td>{{ph}}</td>
+        </tr>
+        <tr>
+          <td>District</td>
+          <td>{{district}}</td>
+        </tr>
+        <tr>
+          <td>Gender</td>
+          <td>{{gender}}</td>
+        </tr>
+            </table></td>
+    <td width="8">&nbsp;</td>
+    <td width="173" rowspan="2" valign="top"><p><strong>Test Name</strong></p>      <p>{% if l %} 
+	  {% for a in l %}
+	  {{a}}<br>
+	  
+	{% endfor %}
+	  {% else %}<b>No Test Entered </b> {% endif %}
+    &nbsp; </p></td>
+    <td width="225" valign="top"><p><strong>Select Result File</strong></p>      <form action="labtestrentry3" onSubmit="return abc()" method="post" enctype="multipart/form-data" name="form1">
+	{% csrf_token %}
+        <p><strong> Result Uploaded       </strong></p>
+        </form>      <p>&nbsp;</p></td>
+  <td width="10">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="45">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="24">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

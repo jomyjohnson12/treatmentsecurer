@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script>
+function abc()
+{
+if(document.form1.t1.value=="" || document.form1.t4.value=="" )
+{
+alert("Please enter the details");
+return(false); 
+}
+
+
+}
+
+</script>
+<body>
+{% include "p2.html" %}
+<table width="1290" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="247" height="21">&nbsp;</td>
+  <td width="803">&nbsp;</td>
+    <td width="240">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="283"></td>
+    <td valign="top"><p align="center"><strong>Lab Test  Registration</strong></p>
+    <form name="form1" method="post" onSubmit="return abc()" action="labreg2">{% csrf_token %}
+        <table width="345" border="0" align="center">
+          <tr>
+            <td width="142">Test Name</td>
+            <td width="187"><input name="t1" type="text" id="t1"></td>
+          </tr>
+          <tr>
+            <td>Test Type </td>
+            <td><select name="t2" id="t2">
+              <option>Internal</option>
+              <option>External</option>
+            </select></td>
+          </tr>
+          <tr>
+            <td>Content</td>
+          <td><select name="t3" id="t3">
+            <option>Blood</option>
+            <option>Urine</option>
+            <option>Other</option>
+                    </select></td>
+          </tr>
+          <tr>
+            <td>Test Duration </td>
+            <td><input name="t4" type="text" id="t4" onKeyPress="return numbers(event)"></td>
+          </tr>
+          <tr>
+            <td>Duration Unit </td>
+            <td><select name="t5" id="t5">
+              <option>Min</option>
+              <option>Hours</option>
+                        </select></td>
+          </tr>
+          <tr>
+            <td>Test Result Duration </td>
+            <td><input name="t6" type="text" id="t6" onKeyPress="return numbers(event)"></td>
+          </tr>
+          <tr>
+            <td>Test Result Duration  Unit</td>
+            <td><select name="t7" id="t7">
+              <option>Min</option>
+              <option>Hrs</option>
+              <option>Days</option>
+              <option>Week</option>
+              <option>Month</option>
+                                    </select></td>
+          </tr>
+          <tr>
+            <td colspan="2"><div align="center">
+                <input type="submit" name="Submit" value="Submit">
+                <input type="reset" name="Submit2" value="Reset">
+            </div></td>
+          </tr>
+        </table>
+    </form>      <p>&nbsp; </p></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="15"></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+</body>
+</html>

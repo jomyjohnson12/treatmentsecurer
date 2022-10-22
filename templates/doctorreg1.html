@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<script>
+function abc()
+{
+if(document.form1.t1.value=="" || document.form1.t2.value=="" || document.form1.t3.value=="" || document.form1.t4.value==""|| document.form1.t5.value==""|| document.form1.t9.value=="")
+{
+alert("Please Enter the Details.....");
+return(false);
+
+}
+
+if(document.form1.t4.value.length<6)
+{
+alert("Pin should be  6 digits");
+return(false);
+
+}
+
+if(document.form1.t5.value.length<10)
+{
+alert("Phone should be  min 10 digits");
+return(false);
+
+}
+
+}
+
+</script>
+
+<body>
+{% include "p2.html" %}
+
+<table width="1282" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="61" height="468">&nbsp;</td>
+  <td width="580" valign="top"><p align="center"><strong>Doctor Registration</strong></p>    <form name="form1" onSubmit="return abc()" method="post" action="doctorreg2">{% csrf_token %}
+        <table width="399" border="0" align="center">
+          <tr>
+            <td width="179">Name</td>
+            <td width="204"><input name="t1" type="text" id="t1" onKeyPress="return alphabets(event)"></td>
+          </tr>
+          <tr>
+            <td>House Name </td>
+            <td><input name="t2" type="text" id="t2"></td>
+          </tr>
+          <tr>
+            <td>Place</td>
+            <td><input name="t3" type="text" id="t3"  onKeyPress="return alphabets(event)"></td>
+          </tr>
+          <tr>
+            <td>Pin</td>
+            <td><input name="t4" type="text" id="t4"  onKeyPress="return numbers(event)" maxlength="6"></td>
+          </tr>
+          <tr>
+            <td>Phone</td>
+            <td><input name="t5" type="text" id="t5"  onKeyPress="return numbers(event)" maxlength="13"></td>
+          </tr>
+          <tr>
+            <td>Gender</td>
+            <td><input name="t6" type="radio" value="M">
+              Male 
+              <input name="t6" type="radio" value="F" checked>
+            Female</td>
+          </tr>
+          <tr>
+            <td>Qualification</td>
+            <td><select name="t7" id="t7">
+              <option>MBBS</option>
+              <option>MD</option>
+            </select></td>
+          </tr>
+          <tr>
+            <td>Specialization</td>
+          <td><select name="t8" id="t8">
+            <option>General</option>
+            <option>Cardiology</option>
+            <option>Gynacology</option>
+            <option>ENT</option>
+          </select></td>
+          </tr>
+          <tr>
+            <td colspan="2"><div align="center">Experience
+            </div></td>
+          </tr>
+          <tr>
+            <td colspan="2"><div align="center">
+              <textarea name="t9" cols="40" id="t9"></textarea>
+            </div></td>
+          </tr>
+          <tr>
+            <td>Designation            </td>
+          <td><select name="t10" id="t10">
+            <option>DMO</option>
+            <option>Asst DMO</option>
+            <option>Surgen</option>
+            <option>Consultant</option>
+            <option>Physician</option>
+          </select></td>
+          </tr>
+          <tr>
+            <td>Select Hospital</td>
+          <td><select name="t11" id="t11">
+            
+            {% for a in l %}
+			
+            
+            <option>{{a}}</option>
+            
+			{% endfor %}
+          
+          </select></td>
+          </tr>
+          <tr>
+            <td colspan="2"><input type="submit" name="Submit" value="Submit">
+            <input type="reset" name="Submit2" value="Reset"></td>
+          </tr>
+        </table>
+    </form>    <p>&nbsp; </p></td>
+    <td width="630" valign="top"><p><strong>Hospital Details</strong></p>
+      {% if records %}
+      <table border="0" width="100%">
+          <tr>
+            <th>Hospital ID</th>
+            <th>Location</th>
+            <th>Place</th>
+            <th>District</th>
+            <th>Hospital Type</th>
+          </tr>
+  {% for hospid,location,place,district,htype in records %}
+  <tr align="center">
+    <td>{{hospid}}</td>
+    <td>{{location}}</td>
+    <td>{{place}}</td>
+    <td>{{district}}</td>
+    <td>{{htype}}</td>
+  </tr>
+  {% endfor %}
+      </table>
+        {% else %}<b><font color="#FF0000">No Hospitals Registered</font></b>{% endif %}&nbsp;
+        <p></p></td>
+  <td width="11">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="5"></td>
+    <td></td>
+    <td></td>
+  <td></td>
+  </tr>
+</table>
+</body>
+</html>

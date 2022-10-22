@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+{% include "p4.html" %}
+<table width="1286" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="28" height="17"></td>
+    <td width="125"></td>
+    <td width="660"></td>
+    <td width="63"></td>
+    <td width="410"></td>
+  </tr>
+  <tr>
+    <td height="106"></td>
+    <td></td>
+    <td colspan="2" valign="top"><p><strong>Dr. Consultation Booking</strong></p>
+      <form name="form1" method="post" action="opbook2">{% csrf_token %}
+      {% if l %}  
+        <table width="456" border="0">
+          <tr>
+            <td>Select Specialization </td>
+            <td><select name="c1" id="c1">
+			<option>{{s1}}</option>
+			{% for a in l %}
+			<option>{{a}}</option>
+			{%  endfor %}
+            </select></td>
+            <td><input type="submit" name="Submit" value="Select==&gt;&gt;"></td>
+          </tr>
+        </table>
+		{% else %}<b>No Doctors Available....</b>    {% endif %}
+      </form>      </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="190"></td>
+    <td colspan="2" valign="top"><p>{% if records %} <strong>Select Doctor </strong></p>      <table border="0" width="100%">
+        <tr>
+          <th>Staff ID </th>
+          <th>Name</th>
+          <th>Gender</th>
+          
+          <th>Qualification</th>
+          
+          <th>Select</th>
+        </tr>
+  {% for staffid,name,gender,qualification in records %}
+  <tr align="center">
+    <td>{{staffid}}</td>
+    <td>{{name}}</td>
+    <td>{{gender}}</td>
+    <td>{{qualification}}</td>
+    
+    <td><form action="opbook3" method="post">
+        {% csrf_token %}
+            <input type="hidden" name="t1" value="{{staffid}}">
+            <input name="submit" type="submit" value="Details">
+    </form></td>
+  </tr>
+  {% endfor %}
+      </table>
+      {% else %} <b>No Dr Registered</b> {% endif %}&nbsp;
+    <p></p></td>
+    <td>&nbsp;</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td height="17"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+</body>
+</html>

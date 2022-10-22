@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<script>
+function abc()
+{
+if(document.form1.t0.value=="")
+{
+alert("Please enter the Patient ID");
+return(false);
+}
+
+}
+
+</script>
+<body>
+{% include "p3.html" %}
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="401" height="86" valign="top"><p><strong>Op Booking</strong></p>
+      <form name="form1" onSubmit="return abc()" method="post" action="opbooking2">{% csrf_token %}
+        <table width="394" border="0">
+          <tr>
+            <td width="113">Patient ID </td>
+            <td width="158"><input name="t0" type="text" id="t0"></td>
+            <td width="101"><input type="submit" name="Submit" value="View"></td>
+          </tr>
+        </table>
+      </form>      <p>&nbsp;</p></td>
+    <td width="919">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="300">&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

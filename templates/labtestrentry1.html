@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+{% include "p3.html" %}
+<table width="1294" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="31" height="308">&nbsp;</td>
+    <td width="646" valign="top"><p><strong>Lab Test Result Entry</strong></p>      
+      <p>{% if records %} </p>
+      <table border="0" width="100%">
+        <tr>
+          <th>Lab Test No (Click) </th>
+          <th>Patient ID</th>
+          <th>Staff ID</th>
+          <th>Entry Date</th>
+        </tr>
+  {% for ltestno,pid,staffid,edate  in records %}
+  <tr align="center">
+    <td><form action="labtestrentry2" method="post">{%csrf_token %}<input type="submit" value="<<{{ltestno}}>>"><input type="hidden" name="t1" value="{{ltestno}}"></form></td>
+    <td>{{pid}}</td>
+    <td>{{staffid}}</td>
+    <td>{{edate}}</td>
+     </tr>
+  {% endfor %}
+      </table>
+      {% else %} <b>No Lab Test Entered.....</b>{% endif %}
+    <p>&nbsp; </p></td>
+    <td width="617">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="24">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</body>
+</html>

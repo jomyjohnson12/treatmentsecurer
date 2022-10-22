@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body>
+{% include "p1.html" %}
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="14" height="26">&nbsp;</td>
+    <td width="485">&nbsp;</td>
+    <td width="12">&nbsp;</td>
+    <td width="637">&nbsp;</td>
+    <td width="131">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="345">&nbsp;</td>
+    <td valign="top"><p><strong>Alloted Lab Test</strong></p>
+      <form name="form1" method="post" action="allotedlab2">
+        {% csrf_token %}
+        <table width="486" border="0">
+          <tr>
+            <td width="144">Select Lab Test </td>
+            <td width="188"><select name="c1" id="c1">
+			<option>{{s1}}</option>
+			{% for a in l %}
+			<option>{{a}}</option>
+			{% endfor %}
+            </select></td>
+            <td width="132"><input type="submit" name="Submit" value="Details"></td>
+          </tr>
+        </table>
+      </form>      
+      <p><strong>Test Details</strong></p>
+      <table width="368" border="0">
+        <tr>
+          <td width="176">Test Name </td>
+          <td width="176">{{s1}}</td>
+        </tr>
+        <tr>
+          <td>Test Type </td>
+          <td>{{ttype}}</td>
+        </tr>
+        <tr>
+          <td>Test Content </td>
+          <td>{{tcontent}}</td>
+        </tr>
+        <tr>
+          <td>Test Duration </td>
+          <td>{{tduration}}</td>
+        </tr>
+        <tr>
+          <td>Test Duration Unit </td>
+          <td>{{tdunit}}</td>
+        </tr>
+        <tr>
+          <td>Test Result Duration </td>
+          <td>{{tresultduration}}</td>
+        </tr>
+        <tr>
+          <td>Test Result Duration Unit </td>
+          <td>{{trdunit}}</td>
+        </tr>
+      </table>      <p>&nbsp;  </p></td>
+    <td>&nbsp;</td>
+    <td valign="top"><p><strong>Alloted Hospitals </strong></p>
+      <p>{% if records %} </p>
+      <table border="0" width="100%">
+        <tr>
+          <th>Hospital ID</th>
+          <th>Location</th>
+          <th>Place</th>
+          <th>Pin</th>
+          <th>Phone</th>
+		  <th>District</th>
+          <th>Email</th>
+          <th>Hospital Type</th>
+          <th>Num of Beds</th>
+        </tr>
+  {% for hospid,location,place,pin,phone,district,email,htype,nbed in records %}
+  <tr align="center">
+    <td>{{hospid}}</td>
+    <td>{{location}}</td>
+    <td>{{place}}</td>
+    <td>{{pin}}</td>
+    <td>{{ph}}</td>
+	<td>{{district}}</td>
+    <td>{{email}}</td>
+    <td>{{htype}}</td>
+    <td>{{nbed}}</td>
+  </tr>
+  {% endfor %}
+      </table>
+      {% else %}<b><font color="#FF0000">Not Alloted any Hospital</font></b>{% endif %}&nbsp;
+      <p></p>
+      <p>&nbsp;</p></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="2"></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+</body>
+</html>
